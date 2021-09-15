@@ -31,3 +31,8 @@ class Book():
 
     def post(self, request, response):
         response.text = f"I am a post from book"
+
+def somefunc(req, resp):
+    resp.text = "Something Strange"
+
+app.add_route('/strange', somefunc)

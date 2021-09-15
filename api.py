@@ -7,6 +7,10 @@ class API():
     def __init__(self):
         self.routes = {}
 
+    def add_route(self, path, handler):
+        assert path not in self.routes, "Such route already exists"
+        self.routes[path] = handler
+
     def find_handler(self, request_path):
         for path, handler in self.routes.items():
             parse_result = parse(path, request_path)
@@ -52,9 +56,8 @@ class API():
             path和handler这一对东西，注册到API的实例里面
             其实就是存储在self.routers这个字典里面"""
 
-        assert path not in self.routes, "Such route already exists"
-
         def wrapper(handler):
+            self.add_route(path, handler)
             self.routes[path] = handler
             return handler
         return wrapper
