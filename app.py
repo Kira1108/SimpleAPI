@@ -10,10 +10,6 @@ def home(request, response):
 def about(request, response):
     response.text = "Hello from the about page"
 
-# @app.route("/about")
-# def about(request, response):
-#     response.text = "Fuck"
-
 @app.route("/")
 def index(request, response):
     response.text = "Welcome, my friend"
